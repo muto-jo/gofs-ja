@@ -1,0 +1,8 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+# 翻訳元の原文（ローカルに clone して参照する。README の「翻訳元」を参照）
+upstream/
+# 作業用（ダウンロードした境界データ・中間生成物など）
+scratch/
