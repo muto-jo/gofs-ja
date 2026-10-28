@@ -19,17 +19,18 @@
 
 ## 現状と今後の予定
 
-2026-10-28 時点の状況です。
+2026-10-29 時点の状況です。
 
 **現状**
 
 - [x] README.md・reference.md の日本語訳（初稿）
 - [x] 翻訳時の判断の記録と訳語集（[notes/translation-notes.md](notes/translation-notes.md)、[notes/glossary.md](notes/glossary.md)）
 - [x] 原文の誤りや食い違いの洗い出し（translation-notes.md の「リファレンス誤り」タグ、現在 9 件）
+- [x] README.mdの訳文の原文との照合・修正
 
 **今後の予定**
 
-- [ ] 訳文の原文との照合・修正
+- [ ] reference.mdの訳文の原文との照合・修正
 - [ ] タクシー配車アプリ「GO」の公開情報をもとにしたサンプルフィードの作成（[sample/](sample/)）
   - GOFS の各ファイルの JSON テンプレート
   - 提供エリアのポリゴン（`zones.json`）
