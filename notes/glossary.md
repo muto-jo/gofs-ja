@@ -62,7 +62,7 @@
 | price / cost / pricing | 価格／価格設定 | 決定 | 価格の計算ルールがあり、それで運賃（fare）が決まるという関係で訳す。base price / base cost は「基本価格」。fare cost / fare amount は「運賃額」（T-020） |
 | surcharge | 追加料金 | 決定 | luggage の説明の 1 か所のみ |
 | order（ordered in real time） | 配車依頼（リアルタイムに配車依頼できる） | 決定 | README |
-| private / shared trips | 個別の乗車／相乗りの乗車 | 決定 | README |
+| private / shared trips | 専有の乗車／相乗りの乗車 | 決定 | README。private は相乗り（shared）との対比で、利用者が乗車機会を専有する意味と解する。「個別の乗車」から変更（2026-10-29） |
 | free-floating | 乗り捨て型（フリーフローティング） | 決定 | README |
 | query / dynamic query | クエリ／動的クエリ | 決定 |  |
 | prior notice | 事前通知 | 決定 | gtfs.org 日本語版に合わせる |
