@@ -106,7 +106,8 @@
   2. 存在条件: FORBIDDEN が定義の一覧に無い（T-019）
   3. Phone number: 日本の電話番号の例（`+81312345678`）
   4. Currency code: 日本円は JPY
-  5. データセットのファイル: `booking_type=real-time` は `booking_type=0` を指すと解される（T-014）
+  5. データセットのファイル: `booking_type=real-time` はリアルタイム予約を示す値（現在は `0`）を指すと解される（T-014）
+  - 2026-11-01 追加: データセットのファイル: `realtime_booking` は条件付きで必須が妥当（T-025）
   6. gofs.json: フィールド表と例の構造の食い違い（T-002）
   7. zones.json: ポリゴンの向きが RFC 7946 および例と逆（T-003）
   8. operating_rules.json: `vehicle_type_id` が必須のため `vehicle_types.json` も実質必須（T-015）
@@ -157,13 +158,13 @@
 - 結論: 解釈は上のとおり。日本のタクシー運賃をどう表現するかは、サンプル作成時に実装メモで詰める。分かりにくさについては MobilityData の Slack で意見するか？（Issue はまだ立てない）
 - 状態: 決定（2026-10-27）。表現方法は実装メモに引き継ぐ
 
-### T-014 `booking_type=real-time` という値は定義されていない
-- タグ: リファレンス誤り
+### T-014 `booking_type=real-time` の読み方
+- タグ: 翻訳方針
 - 対象箇所: reference.md「Dataset Files」表の `wait_time` と `realtime_booking` の行 ／ "at least one `booking_rule` is `booking_type=real-time`"
 - 疑問: booking_rules.json では `booking_type` は数値の列挙値（`0` リアルタイム予約、`1` 事前通知による当日予約まで、`2` 前日予約まで）として定義されており、`real-time` という値は無い。また `booking_rule`（単数形）というファイルやフィールドも無い
-- 検討・解釈: `booking_type=0` を指すと解される
-- 結論: 訳文は原文どおりにし、表の直後に訳注で `booking_type=0` を指すと解されることを書いた
-- 状態: 決定（2026-10-27）
+- 検討・解釈: 初稿では `booking_type=0` の書き誤り（リファレンス誤り）と見ていた。しかし列挙値そのものを書いたのではなく、「`booking_type` がリアルタイム予約を示す値である状態」を意味で書いた表現と読める。`booking_rule` も `booking_rules` 配列の要素 1 つを指すと読める
+- 結論: 記述の誤りではなく、意味で書いた表現と解釈する。訳文では原文の `booking_type=real-time` の後ろに「(現在のリファレンスでは0)」を付記し、表の直後の訳注でこの解釈と、現在は `0` が該当することを書いた
+- 状態: 決定（2026-10-27）。2026-11-01 に解釈を変更し、タグをリファレンス誤りから翻訳方針に変更
 
 ### T-015 `vehicle_type_id` が必須なので `vehicle_types.json` が「条件付きで必須」にならない
 - タグ: リファレンス誤り
@@ -249,3 +250,11 @@
 - 検討・解釈: curb は縁石・路肩。デマンド型交通やパラトランジットの用語で、利用者が指定した場所の前の路肩で乗降する方式を指す（運転手は車両の乗り降りまでで、建物の玄関までは介助しない）。stop-to-stop は決まった停留所で乗降する方式、door-to-door は運転手が建物の玄関と車両のあいだの移動も介助する方式。米国の ADA パラトランジットでは curb-to-curb が基本で、door-to-door は必要に応じて提供されることが多い
 - 結論: 訳語は「カーブ・トゥ・カーブ（curb-to-curb）」とし、箇条書きの項目の直後の行に「（訳注: curbは縁石、路肩。利用者の指定する場所の路肩で乗降する方式）」と補足した。項目の文中に入れると読みにくくなるため、文の後ろに置いた
 - 状態: 決定（2026-10-29）
+
+### T-025 `realtime_booking` の必須性が「任意」になっている
+- タグ: リファレンス誤り
+- 対象箇所: reference.md「Dataset Files」表の `wait_time`（Conditionally REQUIRED）と `realtime_booking`（OPTIONAL）の行 ／ "Either `wait_time` or `realtime_booking` MUST be provided if there are no `booking_rules` or at least one `booking_rule` is `booking_type=real-time`."
+- 疑問: 2 つの行には同じ条件文が書かれており、条件を満たすときはどちらか一方が必須になる。それなのに `wait_time` は条件付きで必須、`realtime_booking` は任意で、必須性が食い違っている
+- 検討・解釈: 「A か B のどちらかが必須」という関係は、GTFS・GBFS の慣例では両方を条件付きで必須と記載する（例: GTFS の `calendar.txt` と `calendar_dates.txt`）。これに従えば `realtime_booking` も Conditionally REQUIRED が妥当
+- 結論: 訳文の必須性は原文どおり「任意」とし、表の直後に訳注で、慣例に従えば条件付きで必須が妥当と思われることを書いた
+- 状態: 決定（2026-11-01）

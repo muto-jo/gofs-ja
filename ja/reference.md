@@ -108,11 +108,13 @@
 `operating_rules.json` | 必須 | ゾーン内移動およびゾーン間移動のルールと、運行時間を定義する。
 `calendars.json` | 必須 | 乗客がオンデマンドサービスを利用できる日付と曜日を定義する。
 `fares.json` | 任意 | システムの静的な運賃ルールを定義する。
-`wait_time` | 条件付きで必須 | 問い合わせた地域の待ち時間を返す。`booking_rules` が無い場合、または少なくとも 1 つの `booking_rule` が `booking_type=real-time` である場合は、`wait_time` か `realtime_booking` のいずれかを提供しなければならない（MUST）。
+`wait_time` | 条件付きで必須 | 問い合わせた地域の待ち時間を返す。`booking_rules` が無い場合、または少なくとも 1 つの `booking_rule` が `booking_type=real-time` (現在のリファレンスでは0)である場合は、`wait_time` か `realtime_booking` のいずれかを提供しなければならない（MUST）。
 `booking_rules.json` | 任意 | 問い合わせた地域における予約のルールを返す。
-`realtime_booking` | 任意 | 静的な予約情報を提供できない場合に、利用可能な予約の詳細を返す。`booking_rules` が無い場合、または少なくとも 1 つの `booking_rule` が `booking_type=real-time` である場合は、`wait_time` か `realtime_booking` のいずれかを提供しなければならない（MUST）。
+`realtime_booking` | 任意 | 静的な予約情報を提供できない場合に、利用可能な予約の詳細を返す。`booking_rules` が無い場合、または少なくとも 1 つの `booking_rule` が `booking_type=real-time` (現在のリファレンスでは0)である場合は、`wait_time` か `realtime_booking` のいずれかを提供しなければならない（MUST）。
 
-> 訳注: `booking_type` は [booking_rules.json](#booking_rulesjson) で数値の列挙値（`0`, `1`, `2`）として定義されている。`booking_type=real-time` は `booking_type=0`（リアルタイム予約）を指すと解される。
+> 訳注: `booking_type` は [booking_rules.json](#booking_rulesjson) で数値の列挙値（`0`, `1`, `2`）として定義されている。`booking_type=real-time` は `booking_type` が意味として「リアルタイム予約を指す値を指定している状態」と解釈した。現在は0が該当するため0を付記した。
+
+> 訳注: realtime_bookingが任意(OPTIONAL)になっているが、GTFS/GBFSの慣例(どちらかのファイル/フィールドが条件付き必須の場合、どちらも条件付き必須と記載する)に従えば、Conditionally REQUIREDが妥当と思われる。
 
 <a id="file-requirements"></a>
 ## ファイルの要件
@@ -120,7 +122,7 @@
 <a id="auto-discovery"></a>
 ### 自動検出
 
-データ提供者は、`gofs.json` 自動検出エンドポイントの場所へのリンクを置くことで、GOFS フィードの自動検出を実装すべきである（SHOULD）。
+データ提供者は、`gofs.json` による自動検出エンドポイントの場所へのリンクを置くことで、GOFS フィードの自動検出を実装すべきである（SHOULD）。
 
 * 自動検出ファイルの場所は、`system_information.json` ファイルの URL フィールドで指定された URL にある、オンデマンドサービスのランディングページの HTML 内で提供すべきである（SHOULD）。
 * これは次の形式の _link_ タグで参照する。

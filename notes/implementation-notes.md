@@ -25,4 +25,10 @@
 
 ## 記録
 
-（まだありません）
+### I-001 operator に事業主体・運行事業者・システム提供者を区別して書けない
+- 対象: system_information.json / `name`, `short_name`, `operator`
+- 実サービスの状況: 日本のデマンド交通では、事業主体（自治体）・運行事業者・運行システムの提供者が別であることが多い。例えば「のるーとふじ」は、事業主体が富士市、運行事業者が富士急静岡バス株式会社、運行システムがのるーと
+- 疑問: `operator` には誰を書くべきか。また、3 者の関係を GOFS で表せるか
+- 検討・解釈: `operator` は OPTIONAL の String が 1 つだけで、「Name of the on-demand service operator. The operator name MAY be the same as the system name.」とあるのみ。役割を区別する仕組みは無い。system は、`name` が乗客に表示する名前であることなどから、バックエンドのシステムではなく利用者から見た運行サービス全体と読める。そのため、のるーとのシステムを使って富士市で運行している「のるーとふじ」は、「のるーとふじ」として 1 つの system に定義してよい。GTFS の `attributions.txt` のように、組織ごとに producer・operator・authority の役割を付けられる仕組みを GOFS にも組み込んだほうがよい
+- 結論: 現状の仕様では、のるーとふじの場合 `name`: のるーとふじ、`short_name`: 省略またはのるーとふじ、`operator`: 富士市 が妥当と訳者は考える。ただし `operator` を運行事業者（富士急静岡バス株式会社）とするのが妥当という意見も考えられる。役割の区別の仕組みは MobilityData への意見の候補とする
+- 状態: 未決
