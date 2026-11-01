@@ -78,7 +78,7 @@
     * 特に指定のない限り、グローバルに一意である必要はない
     * スペースを含んではならない（MUST NOT）
     * 特定のエンティティ（ゾーン、プランなど）に対して永続的でなければならない（MUST）。
-- **Language** - IETF BCP 47 の言語コード。IETF BCP 47 の概要については [http://www.rfc-editor.org/rfc/bcp/bcp47.txt](http://www.rfc-editor.org/rfc/bcp/bcp47.txt) および [http://www.w3.org/International/articles/language-tags/](http://www.w3.org/International/articles/language-tags/) を参照。 <br> *例: 英語は `en`、アメリカ英語は `en-US`、ドイツ語は `de`。*
+- **Language** - IETF BCP 47 の言語コード。IETF BCP 47 の概要については [http://www.rfc-editor.org/rfc/bcp/bcp47.txt](http://www.rfc-editor.org/rfc/bcp/bcp47.txt) および [http://www.w3.org/International/articles/language-tags/](http://www.w3.org/International/articles/language-tags/) を参照。 <br> *例: 英語は `en`、アメリカ英語は `en-US`、ドイツ語は `de`。* （訳注: 日本語は `ja` ）
 - **Non-negative Integer** - 0 以上の整数。
 - **Float** - 浮動小数点数。
 - **Object** - キーと値の組（フィールド）からなる JSON 要素。
@@ -184,12 +184,13 @@
 
 フィールド名 | 必須性 | 型 | 説明
 ---|---|---|---
-`language` | 必須 | Language | 残りのファイル全体で使用される言語。[system_information.json](#system_informationjson) ファイルの値と一致しなければならない（MUST）。
+`language` | 必須 | Language | 残りのファイル全体で使用される言語。[system_information.json](#system_informationjson) ファイルの値と一致しなければならない（MUST）。  （訳注: このフィールドは `language` ではなく、使用する言語のコードをフィールド名として指定する。日本語であれば `ja` とする）
 \-&nbsp;`feeds` | 必須 | Array | この自動検出ファイルによって公開されるすべてのフィードの配列。配列の各要素は、以下のキーを持つオブジェクトである。
 &emsp;\-&nbsp;`name` | 必須 | String | フィードの種類を識別するキー。キーは、対応するフィードの種類について本仕様で定義された基本ファイル名でなければならない（MUST）（`zones.json` ファイルなら `zones`、`operating_rules.json` ファイルなら `operating_rules`）。
 &emsp;\-&nbsp;`url` | 必須 | URL | フィードの URL。実際のフィードのエンドポイント（URL）は `file_name.json` の形式で定義されていなくてもよい（MAY NOT）ことに注意。例えば、有効なフィードのエンドポイントは `zones.json` ではなく `zones` で終わってもよい。
 
-> 訳注: 上の表では `language` と `feeds` が "data" オブジェクト直下に並ぶように読めるが、次の例では "data" の下が言語コード（`"en"`、`"fr"`）をキーとするオブジェクトになっており、`language` フィールドが無い。表と例の構造が一致していない。
+> 訳注: 上の表では `language` と `feeds` が "data" オブジェクト直下に並ぶように読めるが、次の例では "data" の下が言語コード（`"en"`、`"fr"`）をキーとするオブジェクトになっており、`language` フィールドが無い。表と例の構造が一致していない。  
+このlanguageフィールドは、 `language` というkeyのフィールドではなく、該当する言語コードを `language` フィールドとして指定する。この点は、既存のGOFS実装例であるridefreebeeの[gofs.json](https://api.ridefreebee.com/gofs/11)を参照して確認を行なった。
 
 ##### 例:
 
@@ -268,8 +269,8 @@
 
 フィールド名 | 必須性 | 型 | 説明
 ---|---|---|---
-`language` | 必須 | Language | 残りのファイル全体で使用される言語。
-`timezone` | 必須 | Timezone | オンデマンドサービスシステムが所在するタイムゾーン。
+`language` | 必須 | Language | 残りのファイル全体で使用される言語。  （訳注: この `language` フィールドは、gofs.jsonと異なり、 `language` がkeyとなる）
+`timezone` | 必須 | Timezone | オンデマンドサービスシステムが所在するタイムゾーン。  （訳注: 日本であれば、 `Asia/Tokyo` となる）
 `name` | 必須 | String | 乗客に表示する、オンデマンドサービスシステムの名称。
 `short_name` | 任意 | String | オンデマンドサービスシステムの名称として一般に使われる略称。
 `operator` | 任意 | String | オンデマンドサービスの運行事業者の名称。運行事業者名はシステム名と同じでもよい（MAY）。

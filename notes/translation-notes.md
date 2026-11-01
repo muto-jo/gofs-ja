@@ -45,9 +45,11 @@
 - タグ: リファレンス誤り
 - 対象箇所: reference.md「gofs.json」
 - 疑問: フィールド表では `data` の直下に `language` と `feeds` があるように読めるが、例では `data` の下が `"en"`, `"fr"` の言語コードをキーにしたオブジェクトになっている（GBFS v2 系の構造）。どちらに従うべきか
-- 検討・解釈: 翻訳としては原文どおり訳し、訳注で食い違いを指摘する。サンプル作成時にどちらの構造を採るかは、`upstream/gofs/schema/gofs.json` の定義も確認して実装メモで決める
-- 結論:
-- 状態: 未決
+- 検討・解釈: 翻訳としては原文どおり訳し、訳注で食い違いを指摘する。例の構造が正しいかを次の 2 つで確認した（2026-11-01）
+  - 既存の GOFS 実装例である ridefreebee の [gofs.json](https://api.ridefreebee.com/gofs/11) は、`data` の下が `"en"` をキーとするオブジェクトになっており、`language` というキーは無い
+  - `upstream/gofs/schema/gofs.json` でも、`data` は言語コード（`^[a-z]{2,3}(-[A-Z]{2})?$`、IETF BCP 47）をキーとする `patternProperties` で定義されている
+- 結論: 例の構造が正しい。表の `language` は `language` というキーではなく、言語コード（日本語なら `ja`）そのものをキーにすることを表すと解釈する。訳文では表の `language` の行と表の直後の訳注にこの解釈を書き、ridefreebee の実装例で確認したことを添えた。表の書き方が誤解を招くため、タグはリファレンス誤りのままとする。あわせて system_information.json の `language` は通常の `language` キーであること、`timezone` は日本なら `Asia/Tokyo` となることを訳注で補足した
+- 状態: 決定（2026-11-01）
 
 ### T-003 ゾーンのポリゴンの頂点の向きが RFC 7946 と逆に書かれている
 - タグ: リファレンス誤り
