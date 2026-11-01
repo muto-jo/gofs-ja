@@ -27,7 +27,7 @@
 - [x] 翻訳時の判断の記録と訳語集（[notes/translation-notes.md](notes/translation-notes.md)、[notes/glossary.md](notes/glossary.md)）
 - [x] 原文の誤りや食い違いの洗い出し（translation-notes.md の「リファレンス誤り」タグ、現在 9 件）
 - [x] README.mdの訳文の原文との照合・修正
-- [ ] reference.mdの訳文の原文との照合・修正（フィールドの定義、gofs.jsonを確認中）
+- [ ] reference.mdの訳文の原文との照合・修正（service_brands.jsonを確認中）
 
 **今後の予定**
 
