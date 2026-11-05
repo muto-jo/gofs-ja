@@ -55,9 +55,9 @@
 - タグ: リファレンス誤り
 - 対象箇所: reference.md「zones.json」`geometry` の説明 ／ "a clockwise arrangement of points defines the area enclosed by the polygon, where pickup and drop off MAY occur"
 - 疑問: RFC 7946 §3.1.6 は外周リングを反時計回り（穴は時計回り）としている。GOFS の記述は「時計回り = 乗降できる範囲」で逆に読める。しかも同じ節の例（zoneA）の外周は反時計回りで、本文と例が食い違っている。また `geometry` の型は GeoJSON Polygon だけで、MultiPolygon は書かれていない
-- 検討・解釈: 翻訳は原文どおりにし、訳注で RFC 7946 および例との違いを指摘する。ポリゴン作成時にどちらの向きにするか、飛び地のある提供エリアを複数ゾーンに分けるかは実装メモで決める。`tools/validate.py` は向きをエラーにせず情報として表示する
-- 結論:
-- 状態: 未決
+- 検討・解釈: 翻訳は原文どおりにし、訳注で RFC 7946 および例との違いを指摘する。ポリゴン作成時にどちらの向きにするか、飛び地のある提供エリアを複数ゾーンに分けるかは実装メモで決める。`tools/validate.py` は向きをエラーにせず情報として表示する。実例として ridefreebee の zones.json（https://api.ridefreebee.com/gofs/11）を確認した。同じゾーン内の飛び地は、MultiPolygon ではなく 1 つの Polygon の自己接触する線で描かれていた（本体から飛び地まで線をたどり、飛び地を描いて同じ線を戻って本体に戻る）。バリデーターによっては自己接触として扱われるが、GOFS では実例のある表し方である
+- 結論: 現在の訳注のとおり、説明は RFC 7946 と逆になっている。翻訳は原文どおりとし、訳注で補足する
+- 状態: 決定（2026-11-05）
 
 ### T-004 表の Presence 列を訳すか
 - タグ: プロジェクト方針
