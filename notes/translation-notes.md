@@ -128,7 +128,6 @@
   - 出力形式: 「the feed confirms」は conforms（準拠する）の誤りと解して訳した
   - 出力形式の例: 共通ヘッダーの例だが、中身は system_information.json の内容になっている
   - calendars.json `days` の例: `"sat, "sun"` の引用符が欠けている。コード部分なので原文のまま
-  - wait_time のリクエストパラメータ表: `brand_id` の行の型が `ID |  Array` となっており、列が 1 つ多い。原文のまま残した
   - booking_rules.json `from_zone_ids`: 「that cover the area of the wait time update（待ち時間の更新対象エリア）」は、他の節からの転記と思われる。意味は乗車ゾーンと解される。直訳のまま
   - realtime_booking: 「At least of one」（At least one の誤り）、「the the same」「adresses」
   - フィールドの型 Time: 「trip schedule begins」は GTFS からの転記と思われる。「運行スケジュールが始まる日」と訳した
@@ -266,5 +265,13 @@
 - 対象箇所: reference.md「fares.json」「"Fares" オブジェクトの構造」の `amount`、「realtime_booking」のレスポンスの `travel_cost`（型はいずれも Non-negative currency amount）
 - 疑問: 冒頭の「Field Types」に `Non-negative currency amount` が無い。Non-negative Integer・Float・Currency code はあるが、金額の型は定義されておらず、整数か小数か、小数点以下の桁数をどう扱うかが分からない
 - 検討・解釈: 名前と、原文の例の `amount` に 3.30 などの小数が使われていることから、通貨の金額を 0 以上の数値（整数または小数）で表す型と読める。小数点以下の桁数は ISO 4217 の補助単位に従うと考えるのが自然（JPY は 0 桁、CAD は 2 桁）
-- 結論: 型名は原文どおりとし、`amount` の表の後ろに訳注で、型が未定義であること、その通貨の金額を正の整数または小数で表すと判断したことを書いた
+- 結論: 型名は原文どおりとし、`amount` の表の後ろに訳注で、型が未定義であること、その通貨の金額を0以上の整数または小数で表すと判断したことを書いた
 - 状態: 決定（2026-11-10）
+
+### T-027 wait_time のリクエストパラメータ表で `brand_id` の行が崩れ、説明が表示されない
+- タグ: リファレンス誤り
+- 対象箇所: reference.md「wait_time」リクエストパラメータ表の `brand_id` の行 ／ "`brand_id` | Conditionally REQUIRED | ID |  Array | Array of service brand Ids defined in `service_brands.json`. REQUIRED if more than one service brand is available."
+- 疑問: 型の列に `ID |  Array` と書かれており、列が 1 つ多い。GitHub などで表示すると、表の列数がヘッダーを超えて型は `ID`、説明は `Array` となり、本来の説明が表示されない（Markdown のソースを見れば読める）
+- 検討・解釈: 説明が「`service_brands.json` で定義されたサービスブランドの ID の配列」であることと、リクエストの例で `brand_id=regular_ride,large_ride` と複数の ID を渡していることから、型は Array が正しいと思われる。当初は軽微な誤記として T-010 に記録し原文のまま残していたが、説明が読めなくなるため軽微ではないと判断し、独立させた
+- 結論: 読者の利便を優先し、訳文では型を `Array` に直して説明が表示されるようにした。表の直後に訳注で、原文の表記崩れと、原文では型が `ID`、説明が `Array` と表示されることを書いた
+- 状態: 決定（2026-11-15）

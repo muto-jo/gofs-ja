@@ -19,15 +19,15 @@
 
 ## 現状と今後の予定
 
-2026-11-10 時点の状況です。
+2026-11-15 時点の状況です。
 
 **現状**
 
 - [x] README.md・reference.md の日本語訳（初稿）
 - [x] 翻訳時の判断の記録と訳語集（[notes/translation-notes.md](notes/translation-notes.md)、[notes/glossary.md](notes/glossary.md)）
-- [x] 原文の誤りや食い違いの洗い出し（translation-notes.md の「リファレンス誤り」タグ、現在 10 件）
+- [x] 原文の誤りや食い違いの洗い出し（translation-notes.md の「リファレンス誤り」タグ、現在 11 件）
 - [x] README.mdの訳文の原文との照合・修正
-- [ ] reference.mdの訳文の原文との照合・修正（wait_timeまで確認済み）
+- [x] reference.mdの訳文の原文との照合・修正
 
 **今後の予定**
 

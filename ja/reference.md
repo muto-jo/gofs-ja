@@ -596,10 +596,10 @@ ridefreebeeでも反時計回りで乗降区域が定義されており、RFC 79
 `fares` | 必須 | Array | 以下で定義する運賃定義ごとに 1 つのオブジェクトを含む配列。
 \-&nbsp;`fare_id` | 必須 | ID | 運賃の一意な識別子。
 \-&nbsp;`currency` | 必須 | Currency code | 運賃の通貨。（訳注: 日本円は `JPY` ）
-\-&nbsp;`kilometer` | 任意 | Array | 1 キロメートルあたりのサービス価格を定義する Fare オブジェクトの配列。乗客 1 人あたりの総額は、`rider` で定義された基本価格に、`kilometer`、`minute`、`active_minute`、`idle_minute` のすべての区分を加算したものである。
-\-&nbsp;`minute` | 任意 | Array | 車両が動いているかどうかにかかわらず、1 分あたりのサービス価格を定義する Fare オブジェクトの配列。乗客 1 人あたりの総額は、`rider` で定義された基本価格に、`kilometer`、`minute`、`active_minute`、`idle_minute` の該当するすべての区分を加算したものである。
-\-&nbsp;`active_minute` | 任意 | Array | 車両が走行している間の、1 分あたりのサービス価格を定義する Fare オブジェクトの配列。乗客 1 人あたりの総額は、`rider` で定義された基本価格に、`kilometer`、`minute`、`active_minute`、`idle_minute` の該当するすべての区分を加算したものである。
-\-&nbsp;`idle_minute` | 任意 | Array | 車両が停止している、または動いていない間の、1 分あたりのサービス価格を定義する Fare オブジェクトの配列。乗客 1 人あたりの総額は、`rider` で定義された基本価格に、`kilometer`、`minute`、`active_minute`、`idle_minute` の該当するすべての区分を加算したものである。
+\-&nbsp;`kilometer` | 任意 | Array | キロメートルあたりのサービス価格を定義する Fare オブジェクトの配列。乗客 1 人あたりの総額は、`rider` で定義された基本価格に、`kilometer`、`minute`、`active_minute`、`idle_minute` のすべての区分を加算したものである。
+\-&nbsp;`minute` | 任意 | Array | 車両が動いているかどうかにかかわらず、分あたりのサービス価格を定義する Fare オブジェクトの配列。乗客 1 人あたりの総額は、`rider` で定義された基本価格に、`kilometer`、`minute`、`active_minute`、`idle_minute` の該当するすべての区分を加算したものである。
+\-&nbsp;`active_minute` | 任意 | Array | 車両が走行している間の、分あたりのサービス価格を定義する Fare オブジェクトの配列。乗客 1 人あたりの総額は、`rider` で定義された基本価格に、`kilometer`、`minute`、`active_minute`、`idle_minute` の該当するすべての区分を加算したものである。
+\-&nbsp;`idle_minute` | 任意 | Array | 車両が停止している、または動いていない間の、分あたりのサービス価格を定義する Fare オブジェクトの配列。乗客 1 人あたりの総額は、`rider` で定義された基本価格に、`kilometer`、`minute`、`active_minute`、`idle_minute` の該当するすべての区分を加算したものである。
 \-&nbsp;`rider` | 任意 | Array | 乗客 1 人あたりの基本価格を定義する Fare オブジェクトの配列。
 \-&nbsp;`luggage` | 任意 | Array | 荷物 1 個あたりの追加料金として、荷物の価格を定義する Fare オブジェクトの配列。
 
@@ -738,7 +738,9 @@ ridefreebeeでも反時計回りで乗降区域が定義されており、RFC 79
 `pickup_lon` | 必須 | Longitude | 利用者が乗車する地点の経度。
 `drop_off_lat` | 条件付きで必須 | Latitude | 利用者が降車する地点の緯度。`drop_off_lon` を指定する場合は必須。それ以外の場合は禁止（FORBIDDEN）。
 `drop_off_lon` | 条件付きで必須 | Longitude | 利用者が降車する地点の経度。`drop_off_lat` を指定する場合は必須。それ以外の場合は禁止（FORBIDDEN）。
-`brand_id` | 条件付きで必須 | ID |  Array | `service_brands.json` で定義されたサービスブランドの ID の配列。複数のサービスブランドが利用可能な場合は必須（REQUIRED）。
+`brand_id` | 条件付きで必須 | Array | `service_brands.json` で定義されたサービスブランドの ID の配列。複数のサービスブランドが利用可能な場合は必須（REQUIRED）。
+
+> 訳注: 原文のmarkdownで `brand_id` の列が表記崩れをしていた。型に `ID | Array` と書かれているため表組の列がヘッダを超え説明が非表示になっている。説明を見る限りArrayで正しいと思われるため、本翻訳では利便性を踏まえ、非表示になっている説明が表示されるよう型定義の記述を修正した。原文は型: `ID` 説明: `Array` となっている。
 
 以下のフィールドはすべて、このクエリのレスポンスのメインの "data" オブジェクト内の属性である。
 
