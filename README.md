@@ -38,7 +38,7 @@
 **今後の予定**
 
 - [ ] 原文の誤りを MobilityData に報告（GitHub Issue）
-- [ ] 実装して分かった論点（割増料金を定義できないことなど）を MobilityData に意見する
+- [ ] 実装して分かった論点（割増料金を定義できないこと、booking_rules.json でサービスブランドを指定できないこと）を MobilityData に意見する
 
 ## 翻訳元
 
