@@ -1,0 +1,51 @@
+{
+  "last_updated": 1794905254,
+  "ttl": 86400,
+  "version": "1.0",
+  "data": {
+    "ja": {
+      "feeds": [
+        {
+          "name": "system_information",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/system_information.json"
+        },
+        {
+          "name": "service_brands",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/service_brands.json"
+        },
+        {
+          "name": "vehicle_types",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/vehicle_types.json"
+        },
+        {
+          "name": "zones",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/zones.json"
+        },
+        {
+          "name": "operating_rules",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/operating_rules.json"
+        },
+        {
+          "name": "calendars",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/calendars.json"
+        },
+        {
+          "name": "fares",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/fares.json"
+        },
+        {
+          "name": "booking_rules",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/booking_rules.json"
+        },
+        {
+          "name": "wait_time",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/wait_time.json"
+        },
+        {
+          "name": "realtime_booking",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/realtime_booking.json"
+        }
+      ]
+    }
+  }
+}

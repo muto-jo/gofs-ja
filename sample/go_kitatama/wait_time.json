@@ -1,0 +1,13 @@
+{
+  "last_updated": 1794905254,
+  "ttl": 0,
+  "version": "1.0",
+  "data": {
+    "wait_times": [
+      {
+        "brand_id": "taxi",
+        "wait_time": 420
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "last_updated": 1794905254,
+  "ttl": 86400,
+  "version": "1.0",
+  "data": {
+    "fares": [
+      {
+        "fare_id": "kitatama_futsu",
+        "currency": "JPY",
+        "rider": [
+          {
+            "amount": 600
+          }
+        ],
+        "kilometer": [
+          {
+            "start": 0,
+            "end": 1,
+            "interval": 1,
+            "amount": 500
+          },
+          {
+            "start": 1,
+            "interval": 0.211,
+            "amount": 100
+          }
+        ]
+      }
+    ]
+  }
+}

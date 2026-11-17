@@ -1,0 +1,20 @@
+{
+  "last_updated": 1794905254,
+  "ttl": 0,
+  "version": "1.0",
+  "data": {
+    "realtime_booking": [
+      {
+        "brand_id": "taxi",
+        "wait_time": 420,
+        "travel_time": 1080,
+        "travel_cost": 4000,
+        "travel_cost_currency": "JPY",
+        "booking_detail": {
+          "service_name": "GO",
+          "web_uri": "https://go.goinc.jp/"
+        }
+      }
+    ]
+  }
+}

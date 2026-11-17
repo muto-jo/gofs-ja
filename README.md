@@ -19,22 +19,24 @@
 
 ## 現状と今後の予定
 
-2026-11-15 時点の状況です。
+2026-11-17 時点の状況です。
 
 **現状**
 
 - [x] README.md・reference.md の日本語訳（初稿）
 - [x] 翻訳時の判断の記録と訳語集（[notes/translation-notes.md](notes/translation-notes.md)、[notes/glossary.md](notes/glossary.md)）
-- [x] 原文の誤りや食い違いの洗い出し（translation-notes.md の「リファレンス誤り」タグ、現在 11 件）
+- [x] 原文の誤りや食い違いの洗い出し（translation-notes.md の「リファレンス誤り」タグ、現在 12 件）
 - [x] README.mdの訳文の原文との照合・修正
 - [x] reference.mdの訳文の原文との照合・修正
+- [x] タクシー配車アプリ「GO」の公開情報をもとにした、北多摩交通圏のサンプルフィード（[sample/go_kitatama/](sample/go_kitatama/)）
+  - GOFS の各ファイルと、`wait_time` / `realtime_booking` のレスポンス例
+  - 提供エリアのポリゴン（`zones.json`。国土数値情報の行政区域データから [tools/build_zones.py](tools/build_zones.py) で作成）
+  - 作成時の仕様の解釈や判断の記録（[notes/implementation-notes.md](notes/implementation-notes.md)）
 
 **今後の予定**
 
-- [ ] タクシー配車アプリ「GO」の公開情報をもとにしたサンプルフィードの作成（[sample/](sample/)）
-  - GOFS の各ファイルの JSON テンプレート
-  - 提供エリアのポリゴン（`zones.json`）
-  - 作成時の仕様の解釈や判断の記録（[notes/implementation-notes.md](notes/implementation-notes.md)）
+- [ ] サンプルの内容の確認・修正
+- [ ] implementation-notes.md の未決事項の整理
 - [ ] 原文の誤りを MobilityData に報告（GitHub Issue）
 
 ## 翻訳元

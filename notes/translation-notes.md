@@ -275,3 +275,11 @@
 - 検討・解釈: 説明が「`service_brands.json` で定義されたサービスブランドの ID の配列」であることと、リクエストの例で `brand_id=regular_ride,large_ride` と複数の ID を渡していることから、型は Array が正しいと思われる。当初は軽微な誤記として T-010 に記録し原文のまま残していたが、説明が読めなくなるため軽微ではないと判断し、独立させた
 - 結論: 読者の利便を優先し、訳文では型を `Array` に直して説明が表示されるようにした。表の直後に訳注で、原文の表記崩れと、原文では型が `ID`、説明が `Array` と表示されることを書いた
 - 状態: 決定（2026-11-15）
+
+### T-028 JSON スキーマでは service_brands.json の `brand_color` / `brand_text_color` が必須になっている
+- タグ: リファレンス誤り
+- 対象箇所: reference.md「service_brands.json」の `brand_color` / `brand_text_color`（必須性は OPTIONAL）／ 原文リポジトリの `schema/service_brands.json`（`required` に `brand_color` と `brand_text_color` が入っている）
+- 疑問: reference.md では 2 つとも任意だが、原文リポジトリの JSON スキーマでは必須になっており、仕様とスキーマが食い違っている。サンプル作成時に、色を省略した service_brands.json がスキーマ検証で NG になって分かった（実装メモ I-011）
+- 検討・解釈: 仕様の正本は reference.md なので任意と読むのが妥当。スキーマの README にも、スキーマは作成途中で仕様全体をカバーしていないとある。スキーマ側の誤りと判断する
+- 結論: 訳文は原文どおり任意のまま（reference.md 自体の誤りではないため訳注は入れていない）。サンプルでは色を省略し、スキーマ検証の NG は承知のうえとする
+- 状態: 決定（2026-11-17）

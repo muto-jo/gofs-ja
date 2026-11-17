@@ -1,0 +1,13 @@
+{
+  "last_updated": 1794905254,
+  "ttl": 86400,
+  "version": "1.0",
+  "data": {
+    "service_brands": [
+      {
+        "brand_id": "taxi",
+        "brand_name": "タクシー"
+      }
+    ]
+  }
+}

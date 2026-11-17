@@ -1,0 +1,12 @@
+{
+  "last_updated": 1794905254,
+  "ttl": 86400,
+  "version": "1.0",
+  "data": {
+    "language": "ja",
+    "timezone": "Asia/Tokyo",
+    "name": "GO（北多摩交通圏）",
+    "operator": "GO株式会社",
+    "url": "https://go.goinc.jp/"
+  }
+}

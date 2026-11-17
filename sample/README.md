@@ -16,4 +16,8 @@ sample/
     └── ...
 ```
 
+| フォルダ | 内容 |
+|---|---|
+| [go_kitatama/](go_kitatama/) | タクシー配車アプリ「GO」の北多摩交通圏（普通車・今すぐ呼ぶ） |
+
 作成時の仕様の解釈や判断は [notes/implementation-notes.md](../notes/implementation-notes.md) にまとめています。

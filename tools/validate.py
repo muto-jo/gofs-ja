@@ -4,7 +4,8 @@
 
 - upstream/gofs/schema/ にスキーマがあるファイルはスキーマで検証する
 - スキーマが無いファイル（fares.json など）は JSON として読めるかだけ確認する
-- zones.json はジオメトリが有効か（自己交差などが無いか）を shapely で確認する
+- zones.json はジオメトリが有効か（自己交差などが無いか）を shapely で確認する。
+  飛び地を往復線でつないだ自己接触（交差はしない）は、エラーにせず情報として出す
 """
 
 import json
@@ -30,12 +31,27 @@ def validate_schema(path: Path, data: dict) -> list[str]:
     ]
 
 
+def is_self_touching_only(geom, reason: str) -> bool:
+    """リングが自分自身に接しているだけで、交差していないかを判定する。
+
+    往復線（幅 0 の線）は面積を持たないので、そのまま計算した面積と make_valid で
+    修復したあとの面積が一致する。線が交差していると、面積の符号が打ち消し合って一致しない。
+    """
+    from shapely import make_valid
+
+    if "Self-intersection" not in reason:
+        return False
+    fixed = make_valid(geom)
+    polygonal = sum(g.area for g in getattr(fixed, "geoms", [fixed]) if g.geom_type in ("Polygon", "MultiPolygon"))
+    return abs(polygonal - geom.area) <= geom.area * 1e-9
+
+
 def validate_zones(data: dict) -> tuple[list[str], list[str]]:
     """zones.json のジオメトリを確認し、(エラー, 情報) を返す。
 
     reference.md は「時計回り = 乗降できる範囲」としており、RFC 7946 の推奨
-    （外周は反時計回り）と逆になっている。どちらが正しいかは未決なので
-    （notes/translation-notes.md T-003）、外周の向きはエラーにせず情報として出す。
+    （外周は反時計回り）と逆になっている（notes/translation-notes.md T-003）ため、
+    外周の向きはエラーにせず情報として出す。
     """
     errors, infos = [], []
     features = data.get("data", {}).get("zones", {}).get("features", [])
@@ -51,7 +67,12 @@ def validate_zones(data: dict) -> tuple[list[str], list[str]]:
         if not geom.is_valid:
             from shapely.validation import explain_validity
 
-            errors.append(f"zone {zone_id}: 無効なジオメトリ: {explain_validity(geom)}")
+            reason = explain_validity(geom)
+            if is_self_touching_only(geom, reason):
+                # 飛び地を往復線でつないだ Polygon（T-003、I-009）。先行実装にもある表し方なので情報として出す
+                infos.append(f"zone {zone_id}: 自己接触あり（飛び地を往復線でつないだ表現とみなす）: {reason}")
+            else:
+                errors.append(f"zone {zone_id}: 無効なジオメトリ: {reason}")
         if geom.geom_type == "Polygon":
             ring = "反時計回り" if geom.exterior.is_ccw else "時計回り"
             infos.append(f"zone {zone_id}: 外周は{ring}")

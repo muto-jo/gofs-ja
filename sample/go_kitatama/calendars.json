@@ -1,0 +1,14 @@
+{
+  "last_updated": 1794905254,
+  "ttl": 86400,
+  "version": "1.0",
+  "data": {
+    "calendars": [
+      {
+        "calendar_id": "everyday",
+        "start_date": "20261117",
+        "end_date": "20271116"
+      }
+    ]
+  }
+}
