@@ -8,7 +8,7 @@
         "from_zone_id": "kitatama",
         "to_zone_id": "kitatama",
         "calendars": ["everyday"],
-        "brand_id": "taxi",
+        "brand_id": "go_regular",
         "vehicle_type_id": ["futsu"],
         "fare_id": "kitatama_futsu"
       },
@@ -16,7 +16,7 @@
         "from_zone_id": "kitatama",
         "to_zone_id": "tokyo_mainland",
         "calendars": ["everyday"],
-        "brand_id": "taxi",
+        "brand_id": "go_regular",
         "vehicle_type_id": ["futsu"],
         "fare_id": "kitatama_futsu"
       }

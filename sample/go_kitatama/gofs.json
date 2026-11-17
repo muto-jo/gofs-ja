@@ -6,6 +6,10 @@
     "ja": {
       "feeds": [
         {
+          "name": "gofs_versions",
+          "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/gofs_versions.json"
+        },
+        {
           "name": "system_information",
           "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/system_information.json"
         },

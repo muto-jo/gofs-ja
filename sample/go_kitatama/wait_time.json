@@ -5,7 +5,7 @@
   "data": {
     "wait_times": [
       {
-        "brand_id": "taxi",
+        "brand_id": "go_regular",
         "wait_time": 420
       }
     ]

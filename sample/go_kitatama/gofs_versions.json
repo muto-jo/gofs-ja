@@ -1,0 +1,13 @@
+{
+  "last_updated": 1794905254,
+  "ttl": 86400,
+  "version": "1.0",
+  "data": {
+    "versions": [
+      {
+        "version": "1.0",
+        "url": "https://raw.githubusercontent.com/muto-jo/gofs-ja/main/sample/go_kitatama/gofs.json"
+      }
+    ]
+  }
+}

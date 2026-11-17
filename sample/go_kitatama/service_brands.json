@@ -5,8 +5,8 @@
   "data": {
     "service_brands": [
       {
-        "brand_id": "taxi",
-        "brand_name": "タクシー"
+        "brand_id": "go_regular",
+        "brand_name": "GO（今すぐ呼ぶ）"
       }
     ]
   }

@@ -19,7 +19,7 @@
 
 ## 現状と今後の予定
 
-2026-11-17 時点の状況です。
+2026-11-18 時点の状況です。
 
 **現状**
 
@@ -32,12 +32,13 @@
   - GOFS の各ファイルと、`wait_time` / `realtime_booking` のレスポンス例
   - 提供エリアのポリゴン（`zones.json`。国土数値情報の行政区域データから [tools/build_zones.py](tools/build_zones.py) で作成）
   - 作成時の仕様の解釈や判断の記録（[notes/implementation-notes.md](notes/implementation-notes.md)）
+- [x] サンプルの内容の確認・修正
+- [x] implementation-notes.md の未決事項の整理（MobilityData に意見するものと、メモに留めるものの区分け）
 
 **今後の予定**
 
-- [ ] サンプルの内容の確認・修正
-- [ ] implementation-notes.md の未決事項の整理
 - [ ] 原文の誤りを MobilityData に報告（GitHub Issue）
+- [ ] 実装して分かった論点（割増料金を定義できないことなど）を MobilityData に意見する
 
 ## 翻訳元
 

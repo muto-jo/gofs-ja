@@ -10,8 +10,9 @@
 | ファイル | 内容 |
 |---|---|
 | [gofs.json](gofs.json) | 自動検出ファイル（言語 `ja`） |
+| [gofs_versions.json](gofs_versions.json) | 利用可能なバージョンの一覧（1.0 のみ） |
 | [system_information.json](system_information.json) | サービス名「GO（北多摩交通圏）」、運行事業者「GO株式会社」 |
-| [service_brands.json](service_brands.json) | サービスブランド「タクシー」 |
+| [service_brands.json](service_brands.json) | サービスブランド「GO（今すぐ呼ぶ）」（`go_regular`） |
 | [vehicle_types.json](vehicle_types.json) | 車両タイプ「普通車」（`futsu`） |
 | [zones.json](zones.json) | 乗車ゾーン「北多摩交通圏」（15 市）と降車ゾーン「東京都（島しょ部を除く）」 |
 | [operating_rules.json](operating_rules.json) | 北多摩→北多摩、北多摩→東京都の 2 ルール（毎日・24 時間） |

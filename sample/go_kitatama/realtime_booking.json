@@ -5,7 +5,7 @@
   "data": {
     "realtime_booking": [
       {
-        "brand_id": "taxi",
+        "brand_id": "go_regular",
         "wait_time": 420,
         "travel_time": 1080,
         "travel_cost": 4000,
